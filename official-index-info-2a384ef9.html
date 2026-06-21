@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏体育 · 信息卡片介绍页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f7f9fc;
+      color: #1e2935;
+      line-height: 1.6;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0c1b2e 0%, #1a2f44 100%);
+      color: #eef3f9;
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: #f7f9fc;
+      clip-path: ellipse(70% 100% at 50% 100%);
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      opacity: 0.85;
+    }
+
+    /* 浅色正文区 */
+    .container {
+      max-width: 1100px;
+      margin: -1rem auto 3rem auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+    }
+
+    .card .icon {
+      display: inline-block;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #0f2c3f;
+    }
+
+    .card p {
+      color: #3b4e5e;
+      font-size: 0.95rem;
+    }
+
+    /* 特色强调色链接 */
+    a {
+      color: #c4452c;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s, border-bottom 0.2s;
+      border-bottom: 1px dotted transparent;
+    }
+
+    a:hover {
+      color: #9f351f;
+      border-bottom: 1px dotted #c4452c;
+    }
+
+    /* 自然链接段落区域 */
+    .link-section {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem 2rem 2.2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      margin-bottom: 2.5rem;
+    }
+
+    .link-section h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #0f2c3f;
+    }
+
+    .link-section p {
+      margin-bottom: 1rem;
+    }
+
+    .link-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      background: white;
+      border-radius: 20px;
+      padding: 1.6rem 2rem 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      margin-bottom: 2rem;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      color: #0f2c3f;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e7edf2;
+      padding: 0.8rem 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      color: #1f3e54;
+    }
+
+    .faq-item span {
+      color: #3b4e5e;
+      font-size: 0.95rem;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      text-align: center;
+      color: #7a8b9b;
+      font-size: 0.85rem;
+      padding: 1.2rem 0 2.5rem;
+      border-top: 1px solid #dce4ec;
+      margin-top: 1.5rem;
+    }
+
+    .footer-note a {
+      color: #7a8b9b;
+      border-bottom: none;
+    }
+
+    .footer-note a:hover {
+      color: #c4452c;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .container {
+        padding: 0 1rem;
+      }
+      .card-grid {
+        gap: 1.2rem;
+      }
+      .link-section, .faq-summary {
+        padding: 1.5rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 hero -->
+  <header class="hero">
+    <h1>爱游戏体育</h1>
+    <p>一个稳定的日常入口，集合体育资讯、赛事动态与内容页面，适合轻松浏览与查找。</p>
+  </header>
+
+  <!-- 主要内容区 -->
+  <main class="container">
+
+    <!-- 用途卡片 + 适合人群卡片 -->
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">📋</div>
+        <h3>信息聚合页</h3>
+        <p>聚合体育相关资讯和基础页面索引，结构清晰，方便快速定位感兴趣的内容板块。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧭</div>
+        <h3>稳定导航</h3>
+        <p>作为一个固定页面入口，长期可用且访问流畅，减少频繁寻找地址的麻烦。</p>
+      </div>
+      <div class="card">
+        <div class="icon">👥</div>
+        <h3>适合哪些人</h3>
+        <p>日常关注体育动态的爱好者、希望有一个稳定起始页的浏览者，以及偏好简洁界面的人。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔗</div>
+        <h3>直接访问</h3>
+        <p>无需额外注册或下载，打开浏览器即可使用，省去复杂步骤，适合各类设备。</p>
+      </div>
+    </div>
+
+    <!-- 自然链接段落 -->
+    <div class="link-section">
+      <h2>页面说明与使用场景</h2>
+      <p>很多朋友在寻找体育相关页面时，往往因为链接变动或搜索结果杂乱而头疼。如果你也希望有一个长期稳定、直观清晰的页面作为起点，可以试试 <a href="https://official-index-ayxsport.com">爱游戏体育</a>。这个页面提供了基础的内容组织方式，把不同板块分门别类列出来，省去反复翻找的麻烦。</p>
+      <p>无论是日常看一眼赛事动态，还是偶尔查阅资料，都可以直接从这个页面开始。它本身不强调复杂的功能，更像是一个安静的索引站——打开、浏览、离开，都很自然。</p>
+      <p>另外，整个页面在手机和电脑上都做了适配，排版会根据屏幕自动调整，不会有按钮太小或者文字错行的问题。如果你习惯用浏览器收藏夹整理常用地址，也可以把这个链接存起来，方便以后快速到达。</p>
+    </div>
+
+    <!-- FAQ 摘要风格（不是完整FAQ，是卡片式问答节选） -->
+    <div class="faq-summary">
+      <h2>常见疑问 · 摘要</h2>
+      <div class="faq-item">
+        <strong>这个页面主要用来做什么？</strong>
+        <span>作为体育内容的一个导航与介绍页，展示不同功能卡片，并聚合一些基础说明，方便新访客快速了解。</span>
+      </div>
+      <div class="faq-item">
+        <strong>是否需要登录或付费？</strong>
+        <span>不需要。它只是一个公开的信息页面，直接打开即可浏览，不涉及个人账户或订阅。</span>
+      </div>
+      <div class="faq-item">
+        <strong>在手机上显示正常吗？</strong>
+        <span>页面采用响应式设计，在手机、平板和电脑上都能自动适配，文字和卡片区域会重新排列，保证可读性。</span>
+      </div>
+      <div class="faq-item">
+        <strong>如何快速回到这个页面？</strong>
+        <span>建议将 <a href="https://official-index-ayxsport.com">爱游戏体育</a> 添加到浏览器书签或收藏夹，下次直接点击即可，无需每次输入网址。</span>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+      内容仅供参考 · <a href="https://official-index-ayxsport.com">爱游戏体育</a> · 页面持续维护
+    </div>
+
+  </main>
+
+</body>
+</html>
